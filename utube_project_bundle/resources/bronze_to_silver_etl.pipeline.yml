@@ -1,0 +1,23 @@
+# The main pipeline for utube_project_bundle
+
+resources:
+  pipelines:
+    bronze_to_silver_etl:
+      name: Bronze_to_silver
+      configuration:
+        catalog_name: ${var.catalog}
+      libraries:
+        - glob:
+            include: ../src/DLT_pipeline/Bronze_to_silver/transformations/**
+      schema: silver
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: ../src/DLT_pipeline/Bronze_to_silver      
+
+
+
+
+
